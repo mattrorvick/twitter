@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="fragments/styles :: headStyles"></div>
+</head>
+<body>
+
+    <div th:fragment="navbar">
+        <nav class="row navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" style="color: #00aced">
+                        <i class="fab fa-twitter"></i> Tech Talent Twitter</a>
+                </div>
+                <div id="navbar">
+                    <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                        <li><a href="/tweets">Home</a></li>
+                        <li><a href="/tweets/new">New Tweet</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li sec:authorize="isAuthenticated()"><a style="pointer-events: none;color: #00aced">
+                            @<span sec:authentication="name"></span></a>
+                        <li sec:authorize="isAuthenticated()"><a href="../logout">Logout</a></li>
+                        <li sec:authorize="!isAuthenticated()"><a href="../login">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <div th:replace="fragments/scripts :: Scripts"></div>
+</body>
+</html>
