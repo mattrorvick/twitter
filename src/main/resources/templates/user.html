@@ -34,6 +34,13 @@
         <h3>No Recent Tweets</h3>
     </div>
 
+    <form th:action="@{/follow/} + ${user.username}" th:if="${!following}" method="post">
+        <button style="float:right" type="Submit" class="btn btn-lg btn-success">Follow</button>
+    </form>
+    <form th:action="@{/unfollow/} + ${user.username}" th:if="${following}" method="post">
+        <button style="float:right" type="Submit" class="btn btn-lg btn-primary unfollow_btn">Following</button>
+    </form>
+
 
 
 
